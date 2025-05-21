@@ -1,110 +1,139 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-
-export default function TabTwoScreen() {
+const Explore = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <ScrollView style={styles.container}>
+      <View style={styles.profileContainer}>
+        <Ionicons name="person-circle-outline" size={100} color="#888" />
+        <TouchableOpacity>
+          <Text style={styles.addPhotoText}>Добавить фото</Text>
+        </TouchableOpacity>
+        <Text style={styles.name}>Пчельников Юрий Александрович</Text>
+        <View style={styles.verifiedContainer}>
+          <Ionicons name="checkmark-circle" size={16} color="#4CAF50" />
+          <Text style={styles.verifiedText}>подтверждённая учётная запись</Text>
+        </View>
+      </View>
+
+      <View style={styles.infoBlock}>
+        <Text style={styles.label}>Электронная почта</Text>
+        <View style={styles.infoRow}>
+          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+          <Text style={styles.infoText}>yuriypochtamailru@mail.ru</Text>
+          <TouchableOpacity>
+            <Text style={styles.editText}>изменить</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.infoBlock}>
+        <Text style={styles.label}>Номер телефона</Text>
+        <View style={styles.infoRow}>
+          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+          <Text style={styles.infoText}>+7 985 906-36-73</Text>
+          <TouchableOpacity>
+            <Text style={styles.editText}>изменить</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.infoBlock}>
+        <Text style={styles.label}>Город</Text>
+        <View style={styles.infoRow}>
+          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+          <Text style={styles.infoText}>Москва</Text>
+          <TouchableOpacity>
+            <Text style={styles.editText}>изменить</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.infoBlock}>
+        <Text style={styles.label}>Дата рождения</Text>
+        <View style={styles.infoRow}>
+          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+          <Text style={styles.infoText}>24 июля 2006 г.</Text>
+          <TouchableOpacity>
+            <Text style={styles.editText}>изменить</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <TouchableOpacity style={styles.passwordButton}>
+        <Text style={styles.passwordButtonText}>Сменить пароль</Text>
+      </TouchableOpacity>
+    </ScrollView>
   );
-}
+};
+
+export default Explore;
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
-  titleContainer: {
+  profileContainer: {
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  addPhotoText: {
+    color: '#3399FF',
+    marginTop: 8,
+  },
+  name: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+    marginTop: 12,
+  },
+  verifiedContainer: {
     flexDirection: 'row',
-    gap: 8,
+    alignItems: 'center',
+    marginTop: 6,
+    backgroundColor: '#222',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 20,
+  },
+  verifiedText: {
+    color: '#ccc',
+    marginLeft: 6,
+    fontSize: 12,
+  },
+  infoBlock: {
+    backgroundColor: '#1c1c1c',
+    padding: 16,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  label: {
+    color: '#888',
+    marginBottom: 8,
+    fontSize: 14,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  infoText: {
+    color: '#fff',
+    marginLeft: 10,
+    flex: 1,
+  },
+  editText: {
+    color: '#3399FF',
+  },
+  passwordButton: {
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  passwordButtonText: {
+    color: '#3399FF',
+    fontSize: 16,
   },
 });

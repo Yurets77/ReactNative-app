@@ -28,16 +28,25 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Главная',
           tabBarIcon: ({ color }) => (
             <IconSymbol name="home-sharp" size={28} color={color} library="ion" />
           ),
         }}
       />
       <Tabs.Screen
+        name="service"
+        options={{
+          title: 'Услуги',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol name="construct-outline" size={28} color={color} library="ion" />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
-          title: 'Settings',
+          title: 'Настройки',
           tabBarIcon: ({ color }) => (
             <IconSymbol name="settings-outline" size={28} color={color} library="ion" />
           ),

@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
+
 
 const newsData = [
   {
@@ -28,6 +30,7 @@ const servicesData = [
 ];
 
 export default function App() {
+const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.appBar}>
@@ -40,9 +43,12 @@ export default function App() {
             <Text>Ваши доступные услуги:</Text>
           </View>
 
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Посмотреть услуги</Text>
-          </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push('/service')}
+      >
+        <Text style={styles.buttonText}>Посмотреть услуги</Text>
+      </TouchableOpacity>
 
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Новости</Text>
@@ -62,7 +68,7 @@ export default function App() {
                 style={styles.serviceItem}
                 onPress={() => alert(`Переход к услуге: ${service}`)}
               >
-                <Text style={styles.serviceText}>• {service}</Text>
+              <Text style={styles.serviceText}>• {service}</Text>
               </TouchableOpacity>
             ))}
           </View>
